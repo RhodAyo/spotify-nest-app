@@ -8,7 +8,7 @@ export class SongsController {
 
     constructor(private songService: SongsService) { }
     @Get()
-    findAll() {
+    findAll(): Promise<Songs[]> {
         try {
             return this.songService.findAll();
         }
@@ -19,12 +19,12 @@ export class SongsController {
     }
 
     @Get(':id')
-    findOne(@Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: number) {
-        return `Found song based on ${typeof id}`;
+    findOne(@Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: number): Promise<Songs> {
+        return this.songService.findOne(id);
     }
 
     @Post()
-    create(@Body() createSong: Songs) {
+    create(@Body() createSong: Songs): Promise<Songs> {
         return this.songService.create(createSong);
     }
 
@@ -34,7 +34,7 @@ export class SongsController {
     }
 
     @Delete(':id')
-    deleteOne() {
-        return 'Song deleted based on ID';
+    delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
+        return this.songService.remove(id);
     }
 }
