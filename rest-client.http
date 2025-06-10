@@ -1,0 +1,27 @@
+
+GET http://localhost:3000/
+
+###
+GET http://localhost:3000/songs
+
+###
+GET http://localhost:3000/songs/1
+
+
+###
+POST http://localhost:3000/songs
+
+Content-Type: application/json
+{
+    "title":"Promise Keeper",
+    "artiste" :["Sound of Salem"],
+    "releaseDate": "2022-04-07",
+    "duration": "02:34"
+}
+
+###
+PUT http://localhost:3000/songs/1
+
+
+###
+DELETE http://localhost:3000/songs/1
