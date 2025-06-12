@@ -2,6 +2,8 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Songs } from './dto/songs-dto.entity';
+import { UpdateResult } from 'typeorm';
+import { UpdateSongDto } from './dto/updatesong.entity';
 
 @Controller('songs')
 export class SongsController {
@@ -29,8 +31,8 @@ export class SongsController {
     }
 
     @Put(':id')
-    UpdateOne() {
-        return 'Updated song based on ID';
+    update(@Param('id', ParseIntPipe) id: number, @Body() updateSongDTO: UpdateSongDto,): Promise<UpdateResult> {
+        return this.songService.update(id, updateSongDTO);
     }
 
     @Delete(':id')

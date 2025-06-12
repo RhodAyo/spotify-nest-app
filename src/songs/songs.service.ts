@@ -2,7 +2,8 @@
 import { Injectable } from '@nestjs/common';
 import { Songs } from './dto/songs-dto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
+import { UpdateSongDto } from './dto/updatesong.entity';
 
 @Injectable()
 export class SongsService {
@@ -27,6 +28,11 @@ export class SongsService {
 
     async findOne(id: number): Promise<Songs> {
         return this.songRepository.findOneBy({ id });
+    }
+    update(id: number, recordToUpdate: UpdateSongDto): Promise<UpdateResult> {
+
+        return this.songRepository.update(id, recordToUpdate);
+
     }
 
     async remove(id: number): Promise<void> {
