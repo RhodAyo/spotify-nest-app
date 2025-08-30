@@ -2,26 +2,35 @@
 GET http://localhost:3000/
 
 ###
-GET http://localhost:3000/songs
+GET http://localhost:3000/posts
 
 ###
-GET http://localhost:3000/songs/1
+GET http://localhost:3000/posts/getPost/3
 
 
 ###
-POST http://localhost:3000/songs
-
+POST http://localhost:3000/posts
 Content-Type: application/json
+
 {
-    "title":"Promise Keeper",
-    "artiste" :["Sound of Salem"],
-    "releaseDate": "2022-04-07",
-    "duration": "02:34"
-}
+    "author": "Thumi Satgo Patel",
+    "date": "2025/06/21",
+    "title": "Ultimate rise of Node.js frameworks: Express vs. NestJS",
+    "description": "Comparing two popular Node.js frameworks for backend development.",
+    "image": "https://via.placeholder.com/300x200",
+    "views": 31,
+    "likes": 30,
+    "comments": 23,
+    "readMore": true
+  }
 
 ###
-PUT http://localhost:3000/songs/1
+PUT http://localhost:3000/posts/updatePost/11
+Content-Type: application/json
 
+{
+    "title": "NestJS vs Express: A Developer's Perspective in 2025"
+  }
 
 ###
-DELETE http://localhost:3000/songs/1
+DELETE http://localhost:3000/posts/deletePost/1
