@@ -159,7 +159,7 @@ The .spec.ts files that NestJS auto-generates are designed for automated testing
 - PostsController.spec.ts tests whether the controller is defined and can be instantiated.
 - PostsService.spec.ts checks that the service behaves as expected, often mocking dependencies.
 
-- How to run test: `npm run test`
+- How to run test: `npm run test`.
 
 ## Support
 
